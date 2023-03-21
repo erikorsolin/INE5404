@@ -9,16 +9,16 @@ class Busca_Binaria:
 
     def buscar(self):
         while self.esquerda <= self.direita and not(self.achou):
-            middle = (self.esquerda + self.direita) // 2
+            meio = (self.esquerda + self.direita) // 2
             
-            if self.array[middle] == self.target:
+            if self.array[meio] == self.target:
                 self.achou =  True
 
-            elif self.array[middle] < self.target:
-                self.esquerda = middle + 1
+            elif self.array[meio] < self.target:
+                self.esquerda = meio + 1
             
             else:
-                self.direita = middle - 1
+                self.direita = meio - 1
             
         return self.achou
 
