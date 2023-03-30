@@ -20,9 +20,9 @@ class SistemaVendas:
     def remover_produto(self, produto):
         self.produtos.remove(produto)
 
-    def buscar_produto_por_nome(self, nome):
+    def buscar_produto_por_id(self, id):
         for produto in self.produtos:
-            if produto.nome == nome:
+            if produto.get_id() == id:
                 return produto
         return None
 
@@ -34,7 +34,7 @@ class SistemaVendas:
 
     def autenticar_cliente(self, cpf, senha):
         for cliente in self.clientes:
-            if cliente.cpf == cpf and cliente.senha == senha:
+            if cliente.get_cpf() == cpf and cliente.get_senha() == senha:
                 return cliente
         return None
 
