@@ -5,15 +5,15 @@ from carrinho import Carrinho
 
 loja = SistemaVendas()
 # Adicionando produtos 
-produtos = [Produto('Camiseta', 'Vermelha', 'G', 50.00),
-            Produto('Camiseta', 'Azul', 'G', 50.00),
-            Produto('Camiseta', 'Rosa', 'M', 50.00),
-            Produto('Camiseta', 'Preto', 'P', 40.00),
-            Produto('Calça', 'Jeans', 'M', 80.90),
-            Produto('Calça', 'Azul', 'G', 60.00),
-            Produto('Calça', 'Skynni', 'G', 150.00),
-            Produto('Calça', 'Preto', 'G', 100.00),
-            Produto('Calça', 'Rosa', 'P', 35.00)]
+produtos = [Produto(1234, 'Camiseta', 'Vermelha', 'G', 50.00),
+            Produto(1263,'Camiseta', 'Azul', 'G', 50.00),
+            Produto(6587,'Camiseta', 'Rosa', 'M', 50.00),
+            Produto(9000,'Camiseta', 'Preto', 'P', 40.00),
+            Produto(1324, 'Calça', 'Jeans', 'M', 80.90),
+            Produto(8909,'Calça', 'Azul', 'G', 60.00),
+            Produto(1237, 'Calça', 'Skynni', 'G', 150.00),
+            Produto(9866,'Calça', 'Preto', 'G', 100.00),
+            Produto(4356,'Calça', 'Rosa', 'P', 35.00)]
 for produto in produtos:
     loja.adicionar_produto(produto)
 
@@ -63,14 +63,13 @@ while True:
 
     if acao == 1:
         for produto in loja.get_produtos():
-            print(f"{produto.get_nome()} | {produto.get_cor()} | {produto.get_tamanho()} | {produto.get_preco()}")
+            print(f"{produto.get_id()} | {produto.get_nome()} | {produto.get_cor()} | {produto.get_tamanho()} | {produto.get_preco()}")
 
-    # Não está funcionando
+
     elif acao == 2:
         carrinho = Carrinho(cliente)
-        escolhido = input('Digite o nome do produto que deseja adicionar no carrinho: ')
+        escolhido = int(input('Digite o ID do produto que deseja adicionar no carrinho: '))
         for produto in loja.get_produtos():
-                if produto.get_nome() == escolhido:
-                    carrinho.adicionar_produto(produto)
-        else:
-            print('Produto não encontrado')
+            if produto.get_id() == escolhido:
+                carrinho.adicionar_produto(produto)
+        
