@@ -63,7 +63,7 @@ while True:
 
     if acao == 1:
         for produto in loja.get_produtos():
-            print(f"{produto.get_id()} | {produto.get_nome()} | {produto.get_cor()} | {produto.get_tamanho()} | {produto.get_preco()}")
+            print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
 
 
     elif acao == 2:
@@ -72,4 +72,3 @@ while True:
         for produto in loja.get_produtos():
             if produto.get_id() == escolhido:
                 carrinho.adicionar_produto(produto)
-        
