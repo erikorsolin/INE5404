@@ -16,6 +16,7 @@ while True:
             if cliente == None:
                 print('Cliente não encontrado')
             else:
+                print()
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
                 logado = True
 
@@ -25,10 +26,12 @@ while True:
             senha = input('Digite sua senha: ')
             cliente = Cliente(nome, cpf, senha)
             loja.adicionar_cliente(cliente)
+            print()
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
             logado = True
+            
 
-    print("="*20)
+    print("="*25)
     print('Opções do cliente')
     print('1 - Ver produtos')
     print('2 - Ver produtos disponíveis')
@@ -40,5 +43,7 @@ while True:
     print('8 - Finalizar compra')
     print('9 - Deslogar')
     print('10 - fechar programa')
+    print("="*25)
+
     acao = int(input('Digite a ação a ser tomada; '))
 
