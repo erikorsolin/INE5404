@@ -5,6 +5,15 @@ class SistemaVendas:
         self.clientes = []
         self.vendas = []
 
+    def get_produtos(self):
+        return self.produtos
+    
+    def get_cliente(self):
+        return self.clientes
+    
+    def get_vendas(self):
+        return self.vendas
+
     def adicionar_produto(self, produto):
         self.produtos.append(produto)
 
