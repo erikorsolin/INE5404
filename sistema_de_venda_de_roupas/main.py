@@ -53,13 +53,13 @@ while True:
     print('2 - Adicionar produto ao carrinho')
     print('3 - Remover prproduto do carrinho')
     print('4 - Consultar preço de um produto')
-    print('5 - Ver carrinho')
+    print('5 - Ver produtos no carrinho')
     print('6 - Consultar preço total do carrinho')
-    print('7 - Finalizar compra')
-    print('8 - Deslogar')
-    print('9 - fechar programa')
+    print('7 - Deslogar')
+    print('8 - fechar programa')
     print("="*25)
     acao = int(input('Digite a ação a ser tomada: '))
+    print()
 
     if acao == 1:
         for produto in loja.get_produtos():
@@ -74,13 +74,29 @@ while True:
 
     elif acao == 3:
         escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
-        cliente.carrinho.remover_produto(produto)
+        cliente.carrinho.remover_produto(escolhido)
 
     elif acao == 4:
         escolhido = int(input('Digite o ID do produto que deseja consultar o preço: '))
         for produto in loja.get_produtos():
-            if produto.get_id == escolhido:
+            if produto.get_id() == escolhido:
                 print(f'o preço do produto é {produto.get_preco()} R$')
+    
+    elif acao == 5:
+        for produto in cliente.carrinho.get_produtos():
+            print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
+    
+    elif acao == 6:
+        print(f'o preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
+    
+    elif acao == 7:
+        logado = False
+        continue
+    
+    elif acao == 8:
+        break
+
+
 
     
 
