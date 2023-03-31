@@ -74,13 +74,17 @@ while True:
 
     elif acao == 3:
         escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
-        for produto in cliente.carrinho.get_produtos():
-            if produto.get_id() == escolhido:
-                cliente.carrinho.remover_produto(produto)
+        cliente.carrinho.remover_produto(produto)
+
+    elif acao == 4:
+        escolhido = int(input('Digite o ID do produto que deseja consultar o preço: '))
+        for produto in loja.get_produtos():
+            if produto.get_id == escolhido:
+                print(f'o preço do produto é {produto.get_preco()} R$')
 
     
 
 
 
 
-    
+
