@@ -34,7 +34,7 @@ while True:
                 print()
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
                 logado = True
-
+        
         # USUÁRIO NÃO POSSUI CONTA
         elif decisao == 2:
             nome = input('Digite seu nome: ')
@@ -46,7 +46,7 @@ while True:
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
             logado = True
             
-
+            
     print("="*25)
     print('Opções do cliente')
     print('1 - Ver produtos')
@@ -67,8 +67,20 @@ while True:
 
 
     elif acao == 2:
-        carrinho = Carrinho(cliente)
         escolhido = int(input('Digite o ID do produto que deseja adicionar no carrinho: '))
         for produto in loja.get_produtos():
             if produto.get_id() == escolhido:
-                carrinho.adicionar_produto(produto)
+                cliente.carrinho.adicionar_produto(produto) # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
+
+    elif acao == 3:
+        escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
+        for produto in cliente.carrinho.get_produtos():
+            if produto.get_id() == escolhido:
+                cliente.carrinho.remover_produto(produto)
+
+    
+
+
+
+
+    
