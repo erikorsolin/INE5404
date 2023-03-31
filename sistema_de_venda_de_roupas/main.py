@@ -46,24 +46,26 @@ while True:
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
             logado = True
             
-            
+    print()        
     print("="*25)
     print('Opções do cliente')
     print('1 - Ver produtos')
     print('2 - Adicionar produto ao carrinho')
-    print('3 - Remover prproduto do carrinho')
+    print('3 - Remover produto do carrinho')
     print('4 - Consultar preço de um produto')
     print('5 - Ver produtos no carrinho')
-    print('6 - Consultar preço total do carrinho')
-    print('7 - Deslogar')
-    print('8 - fechar programa')
+    print('6 - Ver quantidade de produtos no carrinho')
+    print('7 - Consultar preço total do carrinho')
+    print('8 - Deslogar')
+    print('9 - Fechar programa')
     print("="*25)
     acao = int(input('Digite a ação a ser tomada: '))
     print()
 
     if acao == 1:
+        print('Produtos disponíveis')
         for produto in loja.get_produtos():
-            print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
+            print(f"-> {produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
 
 
     elif acao == 2:
@@ -80,20 +82,24 @@ while True:
         escolhido = int(input('Digite o ID do produto que deseja consultar o preço: '))
         for produto in loja.get_produtos():
             if produto.get_id() == escolhido:
-                print(f'o preço do produto é {produto.get_preco()} R$')
+                print(f'O preço do produto é {produto.get_preco()} R$')
     
     elif acao == 5:
         for produto in cliente.carrinho.get_produtos():
             print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
     
     elif acao == 6:
-        print(f'o preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
-    
+        print(f'A quantidade de produtos no carrinho é {cliente.carrinho.get_quantidade_produtos()}')
+        
+
     elif acao == 7:
+        print(f'O preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
+    
+    elif acao == 8:
         logado = False
         continue
     
-    elif acao == 8:
+    elif acao == 9:
         break
 
 
