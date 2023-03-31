@@ -101,12 +101,3 @@ while True:
     
     elif acao == 9:
         break
-
-
-
-    
-
-
-
-
-
