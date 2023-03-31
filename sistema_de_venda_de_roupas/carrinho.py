@@ -1,6 +1,5 @@
 class Carrinho:
-    def __init__(self, cliente) -> None:
-        self.cliente = cliente
+    def __init__(self) -> None:
         self.produtos = list()
         self.preco_total = 0
         self.quantidade_produtos = 0
