@@ -74,19 +74,25 @@ while True:
 
     elif acao == 2:
         escolhido = int(input('Digite o ID do produto que deseja adicionar no carrinho: '))
+        if not(escolhido in [produto.get_id() for produto in loja.get_produtos()]):
+            print('Produto não encontrado')
+            
         for produto in loja.get_produtos():
-            if produto.get_id() == escolhido:
-                cliente.carrinho.adicionar_produto(produto) # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
+            if produto.get_id() == escolhido: 
+                cliente.carrinho.adicionar_produto(produto)  # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
+
 
     elif acao == 3:
         escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
         cliente.carrinho.remover_produto(escolhido)
+
 
     elif acao == 4:
         escolhido = int(input('Digite o ID do produto que deseja consultar o preço: '))
         for produto in loja.get_produtos():
             if produto.get_id() == escolhido:
                 print(f'O preço do produto é {produto.get_preco()} R$')
+
     
     elif acao == 5:
         if cliente.carrinho.get_produtos() == None:
@@ -95,23 +101,28 @@ while True:
             for produto in cliente.carrinho.get_produtos():
                 print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
     
+
     elif acao == 6:
         print(f'A quantidade de produtos no carrinho é {cliente.carrinho.get_quantidade_produtos()}')
         
 
+
     elif acao == 7:
         print(f'O preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
     
+
     elif acao == 8:
         loja.remover_cliente(cliente)
         print('Conta excluída')
         logado = False
         continue
+    
 
     elif acao == 9:
         print('Saindo...')
         logado = False
         continue
     
+
     elif acao == 10:
         break
