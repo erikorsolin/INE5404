@@ -13,7 +13,10 @@ produtos = [Produto(1234, 'Camiseta', 'Vermelha', 'G', 50.00),
             Produto(8909,'Calça', 'Azul', 'G', 60.00),
             Produto(1237, 'Calça', 'Skynni', 'G', 150.00),
             Produto(9866,'Calça', 'Preto', 'G', 100.00),
-            Produto(4356,'Calça', 'Rosa', 'P', 35.00)]
+            Produto(4356,'Calça', 'Rosa', 'P', 35.00),
+            Produto(4358,'Vestido', 'Vermelho', 'M', 135.00),
+            Produto(4359,'Vestido', 'Rosa', 'P', 100.00),
+            Produto(4360,'Saia', 'Preto', 'P', 65.00)]
 for produto in produtos:
     loja.adicionar_produto(produto)
 
