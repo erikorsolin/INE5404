@@ -3,17 +3,13 @@ class SistemaVendas:
     def __init__(self):
         self.produtos = []
         self.clientes = []
-        self.vendas = []
 
     def get_produtos(self):
         return self.produtos
     
-    def get_cliente(self):
+    def get_clientes(self):
         return self.clientes
     
-    def get_vendas(self):
-        return self.vendas
-
     def adicionar_produto(self, produto):
         self.produtos.append(produto)
 
@@ -37,7 +33,3 @@ class SistemaVendas:
             if cliente.get_cpf() == cpf and cliente.get_senha() == senha:
                 return cliente
         return None
-
-    def registrar_venda(self, cliente):
-        venda = Carrinho(cliente)
-        self.vendas.append(venda)
