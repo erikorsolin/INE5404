@@ -85,8 +85,11 @@ while True:
                 print(f'O preço do produto é {produto.get_preco()} R$')
     
     elif acao == 5:
-        for produto in cliente.carrinho.get_produtos():
-            print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
+        if cliente.carrinho.get_produtos() == None:
+            print('Carrinho vazio')
+        else:
+            for produto in cliente.carrinho.get_produtos():
+                print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
     
     elif acao == 6:
         print(f'A quantidade de produtos no carrinho é {cliente.carrinho.get_quantidade_produtos()}')
