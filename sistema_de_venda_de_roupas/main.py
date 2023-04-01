@@ -26,15 +26,19 @@ rodando = True
 
 while rodando:
     while not logado:
-        decisao = int(input('Digite 1 se já possui possui uma conta ou 2 se deseja fazer o cadastro: '))
+        decisao = int(input('''
+1 - Logar em uma conta existente
+2 - Cadastrar uma conta nova
 
+Escolha: '''))
+        print()
         # USUÁRIO JÁ POSSUI CONTA
         if decisao == 1:
             cpf = input('Digite seu cpf: ')
             senha = input('Digite sua senha: ')
             cliente = loja.autenticar_cliente(cpf, senha)
             if cliente == None:
-                print('Cliente não encontrado')
+                print('\nCliente não encontrado')
             else:
                 print()
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
