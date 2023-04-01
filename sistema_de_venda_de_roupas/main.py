@@ -56,8 +56,9 @@ while True:
     print('5 - Ver produtos no carrinho')
     print('6 - Ver quantidade de produtos no carrinho')
     print('7 - Consultar preço total do carrinho')
-    print('8 - Deslogar')
-    print('9 - Fechar programa')
+    print('8 - Excluir conta')
+    print('9 - Deslogar')
+    print('10 - Fechar programa')
     print("="*25)
     acao = int(input('Digite a ação a ser tomada: '))
     print()
@@ -99,8 +100,14 @@ while True:
         print(f'O preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
     
     elif acao == 8:
+        loja.remover_cliente(cliente)
+        print('Conta excluída')
+        logado = False
+        continue
+
+    elif acao == 9:
         logado = False
         continue
     
-    elif acao == 9:
+    elif acao == 10:
         break
