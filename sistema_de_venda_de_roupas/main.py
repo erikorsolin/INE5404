@@ -69,6 +69,11 @@ Escolha: '''))
     print('9 - Deslogar')
     print('10 - Fechar programa')
     print("="*25)
+    print('Opções do administrador')
+    print('11 - Adicionar produto ao estoque')
+    print('12 - Remover produto do estoque')
+    print('13 - Buscar produto por ID') 
+    print("="*25)
     acao = int(input('Digite a ação a ser tomada: '))
     print()
 
@@ -132,3 +137,27 @@ Escolha: '''))
 
     elif acao == 10:
         rodando = False
+
+    elif acao in [11, 12, 13]:
+        # adicionar produto
+        if cliente.get_cpf() == "5214":        
+            if acao == 11:
+                nome = input("Nome do produto: ")
+                preco = float(input("Preço do produto: R$"))
+                cor = input("Cor do produto: ")
+                tamanho = input("Tamanho do produto: ")
+                
+                id = int(input("Id do produto: "))
+
+
+                loja.adicionar_produto(Produto(id, nome, cor, tamanho, preco))
+                print('\nProduto adicionado')
+            elif acao == 12:
+                id = int(input("Insira o id do produto a ser removido: "))
+                produto = SistemaVendas.buscar_produto_por_id(id)
+                if produto:
+                    SistemaVendas.remover_produto(produto)
+                else:
+                    print("Produto não cadastrado!")
+        else:
+            print("Esse usuário não tem permissão para executar esta ação")
