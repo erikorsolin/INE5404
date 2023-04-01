@@ -22,8 +22,10 @@ for produto in produtos:
 
 
 logado = False
-while True:
-    while logado == False:
+rodando = True
+
+while rodando:
+    while not logado:
         decisao = int(input('Digite 1 se já possui possui uma conta ou 2 se deseja fazer o cadastro: '))
 
         # USUÁRIO JÁ POSSUI CONTA
@@ -125,4 +127,4 @@ while True:
     
 
     elif acao == 10:
-        break
+        rodando = False
