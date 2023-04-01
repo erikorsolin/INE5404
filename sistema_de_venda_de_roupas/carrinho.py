@@ -5,6 +5,8 @@ class Carrinho:
         self.quantidade_produtos = 0
 
     def get_produtos(self):
+        if self.produtos == []:
+            return None
         return self.produtos
     
     def get_preco_total(self):
