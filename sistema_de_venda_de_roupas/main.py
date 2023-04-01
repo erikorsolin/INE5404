@@ -106,6 +106,7 @@ while True:
         continue
 
     elif acao == 9:
+        print('Saindo...')
         logado = False
         continue
     
