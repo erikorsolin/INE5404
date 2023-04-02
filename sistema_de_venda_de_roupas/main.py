@@ -26,11 +26,7 @@ rodando = True
 
 while rodando:
     while not logado:
-        decisao = int(input('''
-1 - Logar em uma conta existente
-2 - Cadastrar uma conta nova
-
-Escolha: '''))
+        decisao = int(input("\n1 - Logar em uma conta existente\n2 - Cadastrar uma conta\nDigite aqui: "))
         print()
         # USUÁRIO JÁ POSSUI CONTA
         if decisao == 1:
@@ -56,7 +52,6 @@ Escolha: '''))
             logado = True
             
     print()        
-    print("="*25)
     print('Opções do cliente')
     print('1 - Ver produtos')
     print('2 - Adicionar produto ao carrinho')
@@ -66,15 +61,15 @@ Escolha: '''))
     print('6 - Ver quantidade de produtos no carrinho')
     print('7 - Consultar preço total do carrinho')
     print('8 - Excluir conta')
-    print('9 - Deslogar')
-    print('10 - Fechar programa')
     print("="*25)
     print('Opções do administrador')
-    print('11 - Adicionar produto ao estoque')
-    print('12 - Remover produto do estoque')
-    print('13 - Buscar produto por ID') 
+    print('9 - Adicionar produto ao estoque')
+    print('10 - Remover produto do estoque')
     print("="*25)
-    acao = int(input('Digite a ação a ser tomada: '))
+    print('Opções gerais')
+    print('11 - Deslogar')
+    print('12 - Encerrar programa')
+    acao = int(input('\nDigite a ação a ser tomada: '))
     print()
 
     if acao == 1:
@@ -129,35 +124,36 @@ Escolha: '''))
         continue
     
 
-    elif acao == 9:
-        print('Saindo...')
-        logado = False
-        continue
-    
-
-    elif acao == 10:
-        rodando = False
-
-    elif acao in [11, 12, 13]:
-        # adicionar produto
-        if cliente.get_cpf() == "5214":        
-            if acao == 11:
+    elif acao in [9, 10]:
+        # verificando se o usuário tem permissão para realizar essas ações
+        if cliente.get_cpf() == "22213456" and cliente.get_senha() == 'adm123':  # matricula e senha fornecidas pela loja      
+            if acao == 9:
                 nome = input("Nome do produto: ")
                 preco = float(input("Preço do produto: R$"))
                 cor = input("Cor do produto: ")
-                tamanho = input("Tamanho do produto: ")
-                
+                tamanho = input("Tamanho do produto: ")               
                 id = int(input("Id do produto: "))
-
-
                 loja.adicionar_produto(Produto(id, nome, cor, tamanho, preco))
                 print('\nProduto adicionado')
-            elif acao == 12:
+
+            elif acao == 10:
                 id = int(input("Insira o id do produto a ser removido: "))
-                produto = SistemaVendas.buscar_produto_por_id(id)
+                produto = loja.buscar_produto_por_id(id)
                 if produto:
-                    SistemaVendas.remover_produto(produto)
+                    loja.remover_produto(produto)
+                    print('Produto removido com sucesso')
                 else:
                     print("Produto não cadastrado!")
         else:
             print("Esse usuário não tem permissão para executar esta ação")
+
+
+
+    elif acao == 11:
+        print('Saindo...')
+        logado = False
+        continue
+
+
+    elif acao == 12:
+        rodando = False
