@@ -5,18 +5,18 @@ from carrinho import Carrinho
 
 loja = SistemaVendas()
 # Adicionando produtos 
-produtos = [Produto(1234, 'Camiseta', 'Vermelha', 'G', 50.00),
-            Produto(1263,'Camiseta', 'Azul', 'G', 50.00),
-            Produto(6587,'Camiseta', 'Rosa', 'M', 50.00),
-            Produto(9000,'Camiseta', 'Preto', 'P', 40.00),
-            Produto(1324, 'Calça', 'Jeans', 'M', 80.90),
-            Produto(8909,'Calça', 'Azul', 'G', 60.00),
-            Produto(1237, 'Calça', 'Skynni', 'G', 150.00),
-            Produto(9866,'Calça', 'Preto', 'G', 100.00),
-            Produto(4356,'Calça', 'Rosa', 'P', 35.00),
-            Produto(4358,'Vestido', 'Vermelho', 'M', 135.00),
-            Produto(4359,'Vestido', 'Rosa', 'P', 100.00),
-            Produto(4360,'Saia', 'Preto', 'P', 65.00)]
+produtos = [Produto(100, 'Camiseta', 'Vermelha', 'G', 50.00),
+            Produto(101,'Camiseta', 'Azul', 'G', 50.00),
+            Produto(102,'Camiseta', 'Rosa', 'M', 50.00),
+            Produto(103,'Camiseta', 'Preto', 'P', 40.00),
+            Produto(104, 'Calça', 'Jeans', 'M', 80.90),
+            Produto(105,'Calça', 'Azul', 'G', 60.00),
+            Produto(106, 'Calça', 'Skynni', 'G', 150.00),
+            Produto(107,'Calça', 'Preto', 'G', 100.00),
+            Produto(108,'Calça', 'Rosa', 'P', 35.00),
+            Produto(109,'Vestido', 'Vermelho', 'M', 135.00),
+            Produto(110,'Vestido', 'Rosa', 'P', 100.00),
+            Produto(111,'Saia', 'Preto', 'P', 65.00)]
 for produto in produtos:
     loja.adicionar_produto(produto)
 
@@ -73,9 +73,10 @@ while rodando:
     print()
 
     if acao == 1:
-        print('Produtos disponíveis')
+        print('Produtos disponíveis:')
+        print(f"   {'ID':^12}   {'Tipo':^12}   {'Cor':^12}   {'Tamanho':^12}    {'Preço':^12}\n")
         for produto in loja.get_produtos():
-            print(f"-> {produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
+            print(f"-> {produto.get_id():^12} | {produto.get_nome():^12} | {produto.get_cor():^12} | {produto.get_tamanho():^12} | {produto.get_preco():^12}")
 
 
     elif acao == 2:
@@ -146,7 +147,6 @@ while rodando:
                     print("Produto não cadastrado!")
         else:
             print("Esse usuário não tem permissão para executar esta ação")
-
 
 
     elif acao == 11:
