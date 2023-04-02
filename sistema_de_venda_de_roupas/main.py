@@ -85,10 +85,10 @@ while rodando:
         escolhido = int(input('Digite o ID do produto que deseja adicionar no carrinho: '))
         if not(escolhido in [produto.get_id() for produto in loja.get_produtos()]):
             print('Produto não encontrado')
-            
-        for produto in loja.get_produtos():
-            if produto.get_id() == escolhido: 
-                cliente.carrinho.adicionar_produto(produto)  # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
+        else:    
+            for produto in loja.get_produtos():
+                if produto.get_id() == escolhido: 
+                    cliente.carrinho.adicionar_produto(produto)  # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
 
 
     elif acao == 3:
