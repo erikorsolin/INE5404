@@ -51,7 +51,8 @@ while rodando:
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
             logado = True
             
-    print()        
+    print()  
+    print('-'*35)      
     print('Opções do cliente')
     print('1 - Ver produtos')
     print('2 - Adicionar produto ao carrinho')
@@ -61,14 +62,15 @@ while rodando:
     print('6 - Ver quantidade de produtos no carrinho')
     print('7 - Consultar preço total do carrinho')
     print('8 - Excluir conta')
-    print("="*25)
+    print("-"*35)
     print('Opções do administrador')
     print('9 - Adicionar produto ao estoque')
     print('10 - Remover produto do estoque')
-    print("="*25)
+    print("-"*35)
     print('Opções gerais')
     print('11 - Deslogar')
     print('12 - Encerrar programa')
+    print('-'*35)
     acao = int(input('\nDigite a ação a ser tomada: '))
     print()
 
