@@ -5,18 +5,18 @@ from carrinho import Carrinho
 
 loja = SistemaVendas()
 # Adicionando produtos 
-produtos = [Produto(100, 'Camiseta', 'Vermelha', 'G', 50.00),
-            Produto(101,'Camiseta', 'Azul', 'G', 50.00),
-            Produto(102,'Camiseta', 'Rosa', 'M', 50.00),
-            Produto(103,'Camiseta', 'Preto', 'P', 40.00),
-            Produto(104, 'Calça', 'Jeans', 'M', 80.90),
-            Produto(105,'Calça', 'Azul', 'G', 60.00),
-            Produto(106, 'Calça', 'Skynni', 'G', 150.00),
-            Produto(107,'Calça', 'Preto', 'G', 100.00),
-            Produto(108,'Calça', 'Rosa', 'P', 35.00),
-            Produto(109,'Vestido', 'Vermelho', 'M', 135.00),
-            Produto(110,'Vestido', 'Rosa', 'P', 100.00),
-            Produto(111,'Saia', 'Preto', 'P', 65.00)]
+produtos = [Produto(100,'CAMISETA', 'VERMELHA', 'G', 50.00),
+            Produto(101,'CAMISETA', 'AZUL', 'G', 50.00),
+            Produto(102,'CAMISETA', 'ROSA', 'M', 50.00),
+            Produto(103,'CAMISETA', 'PRETO', 'P', 40.00),
+            Produto(104, 'CALÇA', 'JEANS', 'M', 80.90),
+            Produto(105,'CALÇA', 'AZUL', 'G', 60.00),
+            Produto(106, 'CALÇA', 'PRETO', 'G', 150.00),
+            Produto(107,'CALÇA', 'PRETO', 'G', 100.00),
+            Produto(108,'CALÇA', 'ROSA', 'P', 35.00),
+            Produto(109,'VESTIDO', 'VERMELHO', 'M', 135.00),
+            Produto(110,'VESTIDO', 'ROSA', 'P', 100.00),
+            Produto(111,'SAIA', 'PRETO', 'P', 65.00)]
 for produto in produtos:
     loja.adicionar_produto(produto)
 
@@ -33,12 +33,12 @@ while rodando:
             cpf = input('Digite seu cpf: ')
             senha = input('Digite sua senha: ')
             cliente = loja.autenticar_cliente(cpf, senha)
-            if cliente == None:
-                print('\nCliente não encontrado')
-            else:
+            if cliente:
                 print()
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
                 logado = True
+            else:
+                print('\nCliente não encontrado')
         
         # USUÁRIO NÃO POSSUI CONTA
         elif decisao == 2:
@@ -138,10 +138,10 @@ while rodando:
         # verificando se o usuário tem permissão para realizar essas ações
         if cliente.get_cpf() == "22213456" and cliente.get_senha() == 'adm123':  # matricula e senha fornecidas pela loja      
             if acao == 9:
-                nome = input("Nome do produto: ")
+                nome = input("Nome do produto: ").upper()
                 preco = float(input("Preço do produto: R$"))
-                cor = input("Cor do produto: ")
-                tamanho = input("Tamanho do produto: ")               
+                cor = input("Cor do produto: ").upper()
+                tamanho = input("Tamanho do produto: ").upper()               
                 id = int(input("Id do produto: "))
                 loja.adicionar_produto(Produto(id, nome, cor, tamanho, preco))
                 print('\nProduto adicionado')
