@@ -10,3 +10,5 @@ class Cliente(Pessoa):
     def get_senha(self):
         return self.senha
     
+    def set_senha(self, senha):
+        self.senha = senha

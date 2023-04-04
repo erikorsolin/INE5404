@@ -20,3 +20,18 @@ class Produto:
     
     def get_preco(self):
         return self.preco
+    
+    def set_id(self, id):
+        self.id = id
+    
+    def set_nome(self, nome):
+        self.nome = nome
+    
+    def set_cor(self, cor):
+        self.cor = cor
+    
+    def set_tamanho(self, tamanho):
+        self.tamanho = tamanho
+
+    def set_preco(self, preco):
+        self.preco = preco
