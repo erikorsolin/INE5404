@@ -98,9 +98,12 @@ while rodando:
 
     elif acao == 4:
         escolhido = int(input('Digite o ID do produto que deseja consultar o preço: '))
-        for produto in loja.get_produtos():
-            if produto.get_id() == escolhido:
-                print(f'O preço do produto é {produto.get_preco()} R$')
+        if not(escolhido in [produto.get_id() for produto in loja.get_produtos()]):
+            print('Produto não encontrado')
+        else:
+            for produto in loja.get_produtos():
+                if produto.get_id() == escolhido:
+                    print(f'O preço do produto é {produto.get_preco()} R$')
 
     
     elif acao == 5:
@@ -121,10 +124,14 @@ while rodando:
     
 
     elif acao == 8:
-        loja.remover_cliente(cliente)
-        print('Conta excluída')
-        logado = False
-        continue
+        senha = input('Digite sua senha: ')
+        if senha == cliente.get_senha():
+            loja.remover_cliente(cliente)
+            print('Conta excluída')
+            logado = False
+            continue
+        else:
+            print('Senha incorreta')
     
 
     elif acao in [9, 10]:
