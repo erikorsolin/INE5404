@@ -73,8 +73,11 @@ while rodando:
     print('-'*35)
     acao = int(input('\nDigite a ação a ser tomada: '))
     print()
+    
+    if acao not in [i for i in range(1, 13)]:
+        print('Ação não encontrada')
 
-    if acao == 1:
+    elif acao == 1:
         print('Produtos disponíveis:')
         print(f"   {'ID':^12}   {'Tipo':^12}   {'Cor':^12}   {'Tamanho':^12}    {'Preço':^12}\n")
         for produto in loja.get_produtos():
