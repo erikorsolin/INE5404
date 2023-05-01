@@ -1,3 +1,4 @@
+import json
 from sistema_vendas import SistemaVendas
 from produto import Produto
 from cliente import Cliente
@@ -23,6 +24,7 @@ for produto in produtos:
 
 logado = False
 rodando = True
+dados = dict()
 
 while rodando:
     while not logado:
@@ -49,8 +51,28 @@ while rodando:
             loja.adicionar_cliente(cliente)
             print()
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
+
+            # Abre o arquivo no modo de leitura e escrita
+        with open('dados.json', 'r+') as json_file:
+             # Tenta ler o conteúdo do arquivo JSON existente
+            try:
+                dados = json.load(json_file)
+            except json.decoder.JSONDecodeError:
+            # Caso o arquivo esteja vazio ou inválido, inicializa com um dicionário vazio
+                dados = {}
+
+            pessoa = {"nome": cliente.get_nome(),  "senha": cliente.get_senha(), "carrinho": [], "preco_total": 0}
+            dados[cpf] = pessoa  
+
+            # Retorna ao início do arquivo para sobrescrever o conteúdo antigo com o novo
+            json_file.seek(0)
+            # Escreve o dicionário completo no arquivo JSON
+            json.dump(dados, json_file, indent=4)
+            # Trunca o restante do arquivo, caso o novo conteúdo seja menor que o antigo
+            json_file.truncate()            
             logado = True
-            
+
+
     print()  
     print('-'*35)      
     print('Opções do cliente')
@@ -91,8 +113,16 @@ while rodando:
         else:    
             for produto in loja.get_produtos():
                 if produto.get_id() == escolhido: 
-                    cliente.carrinho.adicionar_produto(produto)  # cliente tem carrinho como atributo, e carrinho tem o método adicionar_produto()
+                    cliente.carrinho.adicionar_produto(produto)
+                    # Adicionando produto ao carrinho no arquivo JSON
+                    with open('dados.json', 'r') as f:
+                        dados = json.load(f)                   
+                    dados[f'{cliente.get_cpf()}']["carrinho"].append(produto.get_id())
+                    dados[f'{cliente.get_cpf()}']["preco_total"] += produto.get_preco()
+                    with open('dados.json', 'w') as f:
+                        json.dump(dados, f, indent=4)
 
+                    print(f'O produto {produto.get_nome()} foi adicionado ao carrinho')
 
     elif acao == 3:
         escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
