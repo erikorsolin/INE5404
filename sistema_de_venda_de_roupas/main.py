@@ -45,6 +45,10 @@ while rodando:
                 cliente = Cliente(dados[cpf]["nome"], cpf, senha)
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
                 logado = True
+            
+            else:
+                print('Senha incorreta')
+                continue
 
         
         # USUÁRIO NÃO POSSUI CONTA
@@ -59,7 +63,7 @@ while rodando:
 
             # Abre o arquivo no modo de leitura e escrita
             json_file = open('dados.json', 'r+')
-                 # Tenta ler o conteúdo do arquivo JSON existente
+            # Tenta ler o conteúdo do arquivo JSON existente
             try:
                 dados = json.load(json_file)
             except json.decoder.JSONDecodeError:
