@@ -32,15 +32,20 @@ while rodando:
         print()
         # USUÁRIO JÁ POSSUI CONTA
         if decisao == 1:
-            cpf = input('Digite seu cpf: ')
-            senha = input('Digite sua senha: ')
-            cliente = loja.autenticar_cliente(cpf, senha)
-            if cliente:
-                print()
+            cpf = input("Digite seu cpf: ")
+            senha = input("Digite sua senha: ")
+
+            with open('dados.json', 'r') as f:
+                dados = json.load(f)
+            # caso o cliente não esteja no arquivo
+            if cpf not in dados:
+                print('\nCliente não encontrado')
+                continue
+            elif dados[cpf]["senha"] == senha:
+                cliente = Cliente(dados[cpf]["nome"], cpf, senha)
                 print(f'É bom te ver novamente {cliente.get_nome()} :), você está logado!')
                 logado = True
-            else:
-                print('\nCliente não encontrado')
+
         
         # USUÁRIO NÃO POSSUI CONTA
         elif decisao == 2:
@@ -53,8 +58,8 @@ while rodando:
             print(f'Bem vindo(a) {cliente.get_nome()}, você está logado!')
 
             # Abre o arquivo no modo de leitura e escrita
-        with open('dados.json', 'r+') as json_file:
-             # Tenta ler o conteúdo do arquivo JSON existente
+            json_file = open('dados.json', 'r+')
+                 # Tenta ler o conteúdo do arquivo JSON existente
             try:
                 dados = json.load(json_file)
             except json.decoder.JSONDecodeError:
@@ -69,7 +74,8 @@ while rodando:
             # Escreve o dicionário completo no arquivo JSON
             json.dump(dados, json_file, indent=4)
             # Trunca o restante do arquivo, caso o novo conteúdo seja menor que o antigo
-            json_file.truncate()            
+            json_file.truncate() 
+            json_file.close()            
             logado = True
 
 
