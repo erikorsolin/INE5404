@@ -132,8 +132,6 @@ while rodando:
                     with open('dados.json', 'w') as f:
                         json.dump(dados, f, indent=4)
 
-                    print(f'O produto {produto.get_nome()} foi adicionado ao carrinho')
-
     elif acao == 3:
         escolhido = int(input('Digite o ID do produto que deseja remover do carrinho: '))
         cliente.carrinho.remover_produto(escolhido)
@@ -150,20 +148,27 @@ while rodando:
 
     
     elif acao == 5:
-        if cliente.carrinho.get_produtos() == None:
+        with open('dados.json', 'r') as f:
+                dados = json.load(f)
+        if dados[f'{cliente.get_cpf()}']["carrinho"] == []:
             print('Carrinho vazio')
         else:
-            for produto in cliente.carrinho.get_produtos():
-                print(f"{produto.get_id():^10} | {produto.get_nome():^10} | {produto.get_cor():^10} | {produto.get_tamanho():^10} | {produto.get_preco():^10}")
-    
+            for produto in dados[f'{cliente.get_cpf()}']["carrinho"]:
+                for produto2 in loja.get_produtos():
+                    if produto == produto2.get_id():
+                        print(f"{produto2.get_id():^10} | {produto2.get_nome():^10} | {produto2.get_cor():^10} | {produto2.get_tamanho():^10} | {produto2.get_preco():^10}")
+                          
 
     elif acao == 6:
-        print(f'A quantidade de produtos no carrinho é {cliente.carrinho.get_quantidade_produtos()}')
+        with open ('dados.json', 'r') as f:
+            dados = json.load(f)
+        print(f'A quantidade de produtos no carrinho é {len(dados[cliente.get_cpf()]["carrinho"])}')
         
 
-
     elif acao == 7:
-        print(f'O preço total do carrinho é: {cliente.carrinho.get_preco_total()} R$')
+        with open ('dados.json', 'r') as f:
+            dados = json.load(f)
+        print(f'O preço total do carrinho é: {dados[cliente.get_cpf()]["preco_total"]} R$')
     
 
     elif acao == 8:
