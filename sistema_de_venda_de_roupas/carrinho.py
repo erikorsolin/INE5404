@@ -11,9 +11,9 @@ class Carrinho:
     
     def get_preco_total(self):
         return self.preco_total
-    
+
     def get_quantidade_produtos(self):
-        return self.quantidade_produtos
+        return self.quantidade_produtos   
     
     def adicionar_produto(self, produto):
         self.produtos.append(produto)
@@ -30,6 +30,3 @@ class Carrinho:
                 print(f"produto  ({produto.get_nome()} | {produto.get_cor()} | {produto.get_tamanho()})  removido com sucesso")
                 return
         print('Produto não está no carrinho')
-
-
-   

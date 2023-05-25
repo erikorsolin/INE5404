@@ -1,0 +1,41 @@
+{
+    "04562988002": {
+        "nome": "erik",
+        "senha": "erikxxx200pb",
+        "carrinho": [
+            105,
+            107,
+            102,
+            104,
+            106,
+            109,
+            102
+        ],
+        "preco_total": 625.9
+    },
+    "1234567": {
+        "nome": "luigi",
+        "senha": "abc",
+        "carrinho": [
+            105,
+            102
+        ],
+        "preco_total": 110.0
+    },
+    "004034023": {
+        "nome": "beatriz",
+        "senha": "bea321",
+        "carrinho": [
+            106,
+            103,
+            106
+        ],
+        "preco_total": 340.0
+    },
+    "12345": {
+        "nome": "edu",
+        "senha": "54321",
+        "carrinho": [],
+        "preco_total": 0
+    }
+}

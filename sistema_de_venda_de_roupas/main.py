@@ -3,6 +3,7 @@ from sistema_vendas import SistemaVendas
 from produto import Produto
 from cliente import Cliente
 from carrinho import Carrinho
+from tela_menu import TelaMenu
 
 loja = SistemaVendas()
 # Adicionando produtos 
@@ -83,26 +84,7 @@ while rodando:
             logado = True
 
 
-    print()  
-    print('-'*35)      
-    print('Opções do cliente')
-    print('1 - Ver produtos')
-    print('2 - Adicionar produto ao carrinho')
-    print('3 - Remover produto do carrinho')
-    print('4 - Consultar preço de um produto')
-    print('5 - Ver produtos no carrinho')
-    print('6 - Ver quantidade de produtos no carrinho')
-    print('7 - Consultar preço total do carrinho')
-    print('8 - Excluir conta')
-    print("-"*35)
-    print('Opções do administrador')
-    print('9 - Adicionar produto ao estoque')
-    print('10 - Remover produto do estoque')
-    print("-"*35)
-    print('Opções gerais')
-    print('11 - Deslogar')
-    print('12 - Encerrar programa')
-    print('-'*35)
+    TelaMenu.imprimir_menu()
     acao = int(input('\nDigite a ação a ser tomada: '))
     print()
     

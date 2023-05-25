@@ -1,7 +1,7 @@
 class Pessoa:
-    def __init__(self, nome: str, cpf: str) -> None:
+    def __init__(self, nome: str, cpf: str):
         self.nome = nome
-        self.cpf = cpf 
+        self.cpf = cpf
 
     def get_nome(self):
         return self.nome
